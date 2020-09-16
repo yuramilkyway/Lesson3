@@ -1,6 +1,5 @@
 package ru.innopolis.main;
 import java.io.*;
-import java.util.ArrayList;
 
 public class Person {
     final private int age;
@@ -29,7 +28,7 @@ public class Person {
         File file;
         int upperBound;
 
-        if (sex.getSex() == "MAN") {
+        if (sex.getSex().equals("MAN")) {
             file = new File("man.txt");
             upperBound = (int) (Math.random() * 615);
         }

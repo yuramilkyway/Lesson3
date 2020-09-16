@@ -1,15 +1,14 @@
 package ru.innopolis.main;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class GeneratorPerson {
+    final int defaultCountPerson = 10000;
     final private Person[] array;
 
     public GeneratorPerson(int countPerson) throws IOException {
-        if (countPerson < 10_000) {
-            countPerson = 100;
+        if (countPerson < defaultCountPerson) {
+            countPerson = defaultCountPerson;
             System.out.println("Минимальное количество объектов класса Person - 10000;");
         }
         array = new Person[countPerson];

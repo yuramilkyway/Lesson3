@@ -4,19 +4,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        GeneratorPerson generatorPerson = new GeneratorPerson(100);
-        Person[] array = generatorPerson.getArray();
-
-        /*for (Person person : array) {
-            System.out.println(person.toString());
-        }*/
-
-        BubbleSort bubbleSort = new BubbleSort();
-        List<Person> people = bubbleSort.getSortedList(array);
-
-        for (Person people1 : people) {
-            System.out.println(people1.toString());
+    public static void main(String[] args) throws IOException, DuplicatePersonException {
+        GeneratorPerson generatorPerson1 = new GeneratorPerson(100);
+        Person[] array1 = generatorPerson1.getArray();
+        long startTime = System.nanoTime();
+        BubbleSort bubbleSort1 = new BubbleSort();
+        long endTime = System.nanoTime();
+        List<Person> people1 = bubbleSort1.getSortedList(array1);
+        for (Person peop : people1) {
+            System.out.println(peop.toString());
         }
+        System.out.println("Время работы программы: " + ((endTime - startTime) / 1_000_000_000.0) + " секунд.");
     }
 }
