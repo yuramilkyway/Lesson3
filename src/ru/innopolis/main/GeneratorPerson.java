@@ -1,17 +1,19 @@
 package ru.innopolis.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GeneratorPerson {
     final private int DEFAULT_COUNT_PERSON = 10000;
-    final private Person[] array;
+    final private List<Person> list;
 
     public GeneratorPerson(int countPerson) throws IOException {
         if (countPerson < DEFAULT_COUNT_PERSON) {
             countPerson = DEFAULT_COUNT_PERSON;
             System.out.println("Минимальное количество объектов класса Person: " + DEFAULT_COUNT_PERSON);
         }
-        array = new Person[countPerson];
+        list = new ArrayList<>();
         launchGeneratorPerson(countPerson);
     }
 
@@ -19,11 +21,11 @@ public class GeneratorPerson {
         for (int i = 0; i < countPerson; i++) {
             int age = (int) ((Math.random() * (100)) + 1);
             Sex sex = new Sex((int) Math.round(Math.random()));
-            array[i] = new Person(age, sex);
+            list.add(new Person(age, sex));
         }
     }
 
-    public Person[] getArray() {
-        return array;
+    public List<Person> getArray() {
+        return list;
     }
 }

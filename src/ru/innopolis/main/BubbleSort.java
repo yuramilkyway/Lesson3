@@ -8,8 +8,10 @@ import java.util.List;
 public class BubbleSort implements MethodOfSort {
     private final ArrayList<Person> woman = new ArrayList<>();
     private final ArrayList<Person> man = new ArrayList<>();
+    private long startTime;
+    private long endTime;
 
-    private void sortFromSex(Person[] array) {
+    private void sortFromSex(List<Person> array) {
         for (Person person : array) {
             if (person.getSex().equals("MAN")) {
                 man.add(person);
@@ -80,8 +82,14 @@ public class BubbleSort implements MethodOfSort {
         }
     }
 
+    public double getAlgorithmRunningTime() {
+        return (endTime - startTime) / 1_000_000_000.0;
+    }
+
     @Override
-    public List<Person> getSortedList(Person[] array) {
+    public List<Person> getSortedList(List<Person> array) {
+        startTime = System.nanoTime();
+
         sortFromSex(array);
         sortFromAge(man);
         sortFromName(man);
@@ -90,6 +98,8 @@ public class BubbleSort implements MethodOfSort {
 
         List<Person> list = new ArrayList<>(man);
         list.addAll(woman);
+
+        endTime = System.nanoTime();
         return list;
     }
 }
