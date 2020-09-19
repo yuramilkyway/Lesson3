@@ -51,19 +51,19 @@ public class BubbleSort implements MethodOfSort {
                     } catch (DuplicatePersonException e) {
                         System.out.println(e.getMessage());
                     }
-                    char[] str1 = arrayList.get(i).getName().toCharArray();
-                    char[] str2 = arrayList.get(i + 1).getName().toCharArray();
+                    char[] nameAtIndexI = arrayList.get(i).getName().toCharArray();
+                    char[] nameAtIndexNextI = arrayList.get(i + 1).getName().toCharArray();
 
-                    int temp = str1.length;
-                    if (str1.length > str2.length)
-                        temp = str2.length;
+                    int temp = nameAtIndexI.length;
+                    if (nameAtIndexI.length > nameAtIndexNextI.length)
+                        temp = nameAtIndexNextI.length;
 
                     int j = 0;
                     while (true){
-                        if ((str1[j] == str2[j]) && (j != temp - 1)) {
+                        if ((nameAtIndexI[j] == nameAtIndexNextI[j]) && (j != temp - 1)) {
                             j++;
                         }
-                        else if (str1[j] > str2[j]) {
+                        else if (nameAtIndexI[j] > nameAtIndexNextI[j]) {
                             isSorted = false;
 
                             buf = arrayList.get(i);
@@ -81,7 +81,7 @@ public class BubbleSort implements MethodOfSort {
     }
 
     @Override
-    public List<Person> getSortedList(Person[] array) throws DuplicatePersonException {
+    public List<Person> getSortedList(Person[] array) {
         sortFromSex(array);
         sortFromAge(man);
         sortFromName(man);
