@@ -15,4 +15,8 @@ public class Sex {
     public String getSex() {
         return sex;
     }
+
+    public boolean thisMan(Sex sex) {
+        return sex.getSex().equals("MAN");
+    }
 }
