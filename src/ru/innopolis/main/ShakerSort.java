@@ -6,7 +6,7 @@ import ru.innopolis.api.MyCompaer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BubbleSort implements MethodOfSort {
+public class ShakerSort implements MethodOfSort {
     private final ArrayList<Person> woman = new ArrayList<>();
     private final ArrayList<Person> man = new ArrayList<>();
     private long startTime;
@@ -22,21 +22,28 @@ public class BubbleSort implements MethodOfSort {
         }
     }
 
-    private void sort(ArrayList<Person> arrayList, MyCompaer o) {
-        boolean isSorted = false;
-        Person buf;
-        while (!isSorted) {
-            isSorted = true;
-            for (int i = 0; i < arrayList.size() - 1; i++) {
-                if (o.myCompare(arrayList.get(i), arrayList.get(i + 1))) {
-                    isSorted = false;
-
-                    buf = arrayList.get(i);
+    private static void sort(ArrayList<Person> arrayList, MyCompaer myCompaer) {
+        Person buff;
+        int left = 0;
+        int right = arrayList.size() - 1;
+        do {
+            for (int i = left; i < right; i++) {
+                if (myCompaer.myCompare(arrayList.get(i), arrayList.get(i + 1))) {
+                    buff = arrayList.get(i);
                     arrayList.set(i, arrayList.get(i + 1));
-                    arrayList.set(i + 1, buf);
+                    arrayList.set(i + 1, buff);
                 }
             }
-        }
+            right--;
+            for (int i = right; i > left; i--) {
+                if (myCompaer.myCompare(arrayList.get(i - 1), arrayList.get(i))) {
+                    buff = arrayList.get(i);
+                    arrayList.set(i, arrayList.get(i - 1));
+                    arrayList.set(i - 1, buff);
+                }
+            }
+            left++;
+        } while (left < right);
     }
 
     public double getAlgorithmRunningTime() {

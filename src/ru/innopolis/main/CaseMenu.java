@@ -16,7 +16,7 @@ public class CaseMenu {
     private void printMenu() {
         System.out.println("\n1. Перейти в меню Person;");
         System.out.println("2. Перейти в меню сортировки Person с помощью Bubble Sort");
-        System.out.println("3. Перейти в меню сортировки Person с помощью QuickSort;");
+        System.out.println("3. Перейти в меню сортировки Person с помощью Shaker Sort;");
         System.out.println("4. Выход из приложения;");
     }
 
@@ -26,13 +26,7 @@ public class CaseMenu {
         System.out.println("3. Вернуться в прошлое меню\n");
     }
 
-    private void printBubbleSortMenu() {
-        System.out.println("\n1. Отсортировать список Person;");
-        System.out.println("2. Показать время работы алгоритма");
-        System.out.println("3. Вернуться в прошлое меню");
-    }
-
-    private void printQuickSortMenu() {
+    private void printSortMenu() {
         System.out.println("\n1. Отсортировать список Person;");
         System.out.println("2. Показать время работы алгоритма");
         System.out.println("3. Вернуться в прошлое меню");
@@ -59,6 +53,8 @@ public class CaseMenu {
                     for (Person p : persons)
                         System.out.println(p.toString());
                     break;
+                case 3:
+                    break;
                 default:
                     printIncorrectValueMessage();
                     break;
@@ -70,7 +66,7 @@ public class CaseMenu {
         BubbleSort bubbleSort = null;
         int key;
         do {
-            printBubbleSortMenu();
+            printSortMenu();
             key = this.scanner.nextInt();
             switch (key) {
                 case 1:
@@ -78,6 +74,7 @@ public class CaseMenu {
                     persons = bubbleSort.getSortedList(persons);
                     break;
                 case 2:
+                    assert bubbleSort != null;
                     System.out.println("\nВремя работы программы: " + bubbleSort.getAlgorithmRunningTime() + " секунд.");
                     break;
                 case 3:
@@ -89,25 +86,29 @@ public class CaseMenu {
         } while (key != 3);
     }
 
-    /*private void quickSortMenu() {
-        QuickSort quickSort = null;
+    private void shakerSortMenu() {
+        ShakerSort shakerSort = null;
         int key;
         do {
-            printBubbleSortMenu();
+            printSortMenu();
             key = this.scanner.nextInt();
             switch (key) {
                 case 1:
-                    persons = bubbleSort.getSortedList(persons);
+                    shakerSort = new ShakerSort();
+                    persons = shakerSort.getSortedList(persons);
                     break;
                 case 2:
-                    System.out.println("Время работы программы: " + bubbleSort.getAlgorithmRunningTime() + " секунд.");
+                    assert shakerSort != null;
+                    System.out.println("\nВремя работы программы: " + shakerSort.getAlgorithmRunningTime() + " секунд.");
+                    break;
+                case 3:
                     break;
                 default:
                     printIncorrectValueMessage();
                     break;
             }
         } while (key != 3);
-    }*/
+    }
 
     public void start() throws IOException {
         if (this.scanner != null) {
@@ -117,20 +118,11 @@ public class CaseMenu {
                 System.out.print("\nВведите номер меню: ");
                 key = this.scanner.nextInt();
                 switch (key) {
-                    case 1:
-                        personMenu();
-                        break;
-                    case 2:
-                        bubbleSortMenu();
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-                        System.out.println("\nЗавершение программы...");
-                        break;
-                    default:
-                        System.out.println("\nВы ввели неверное значение меню...");
+                    case 1 -> personMenu();
+                    case 2 -> bubbleSortMenu();
+                    case 3 -> shakerSortMenu();
+                    case 4 -> System.out.println("\nЗавершение программы...");
+                    default -> System.out.println("\nВы ввели неверное значение меню...");
                 }
             } while (key != 4);
         }
