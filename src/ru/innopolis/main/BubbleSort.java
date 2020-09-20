@@ -21,13 +21,17 @@ public class BubbleSort implements MethodOfSort {
         }
     }
 
+    private boolean compareAge(Person person1, Person person2) {
+        return person1.getAge() < person2.getAge();
+    }
+
     private void sortFromAge(ArrayList<Person> arrayList) {
         boolean isSorted = false;
         Person buf;
         while(!isSorted) {
             isSorted = true;
             for (int i = 0; i < arrayList.size() - 1; i++) {
-                if(arrayList.get(i).getAge() < arrayList.get(i + 1).getAge()){
+                if(compareAge(arrayList.get(i), arrayList.get(i + 1))){
                     isSorted = false;
 
                     buf = arrayList.get(i);
@@ -38,45 +42,52 @@ public class BubbleSort implements MethodOfSort {
         }
     }
 
+    private boolean compareNameAtTheSameAge(Person person1, Person person2) {
+        boolean result = true;
+        if (person1.getAge() == person2.getAge()) {
+            try {
+                if(!(person1.getName().equals(person2.getName()))) {
+                    throw new DuplicatePersonException(person1);
+                }
+            } catch (DuplicatePersonException e) {
+                System.out.println(e.getMessage());
+            }
+            char[] nameAtIndexI = person1.getName().toCharArray();
+            char[] nameAtIndexNextI = person2.getName().toCharArray();
+
+            int temp = nameAtIndexI.length;
+            if (nameAtIndexI.length > nameAtIndexNextI.length)
+                temp = nameAtIndexNextI.length;
+
+            int j = 0;
+            while (true){
+                if ((nameAtIndexI[j] == nameAtIndexNextI[j]) && (j != temp - 1)) {
+                    j++;
+                }
+                else if (nameAtIndexI[j] > nameAtIndexNextI[j]) {
+                    result = false;
+                    break;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
     private void sortFromName(ArrayList<Person> arrayList) {
         boolean isSorted = false;
         Person buf;
-        while(!isSorted) {
+        while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < arrayList.size() - 1; i++) {
-                if (arrayList.get(i).getAge() == arrayList.get(i + 1).getAge()) {
+                if (!(compareNameAtTheSameAge(arrayList.get(i), arrayList.get(i + 1)))) {
+                    isSorted = false;
 
-                    try {
-                        if(!(arrayList.get(i).getName().equals(arrayList.get(i + 1).getName()))) {
-                            throw new DuplicatePersonException(arrayList.get(i));
-                        }
-                    } catch (DuplicatePersonException e) {
-                        System.out.println(e.getMessage());
-                    }
-                    char[] nameAtIndexI = arrayList.get(i).getName().toCharArray();
-                    char[] nameAtIndexNextI = arrayList.get(i + 1).getName().toCharArray();
-
-                    int temp = nameAtIndexI.length;
-                    if (nameAtIndexI.length > nameAtIndexNextI.length)
-                        temp = nameAtIndexNextI.length;
-
-                    int j = 0;
-                    while (true){
-                        if ((nameAtIndexI[j] == nameAtIndexNextI[j]) && (j != temp - 1)) {
-                            j++;
-                        }
-                        else if (nameAtIndexI[j] > nameAtIndexNextI[j]) {
-                            isSorted = false;
-
-                            buf = arrayList.get(i);
-                            arrayList.set(i, arrayList.get(i + 1));
-                            arrayList.set(i + 1, buf);
-                            break;
-                        }
-                        else {
-                            break;
-                        }
-                    }
+                    buf = arrayList.get(i);
+                    arrayList.set(i, arrayList.get(i + 1));
+                    arrayList.set(i + 1, buf);
                 }
             }
         }
