@@ -1,6 +1,7 @@
 package ru.innopolis.main;
 
 import ru.innopolis.api.MethodOfSort;
+import ru.innopolis.api.MyCompaer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,30 +22,13 @@ public class BubbleSort implements MethodOfSort {
         }
     }
 
-    private void sortFromAge(ArrayList<Person> arrayList) {
-        boolean isSorted = false;
-        Person buf;
-        while(!isSorted) {
-            isSorted = true;
-            for (int i = 0; i < arrayList.size() - 1; i++) {
-                if(compareAge(arrayList.get(i), arrayList.get(i + 1))){
-                    isSorted = false;
-
-                    buf = arrayList.get(i);
-                    arrayList.set(i, arrayList.get(i + 1));
-                    arrayList.set(i + 1, buf);
-                }
-            }
-        }
-    }
-
-    private void sortFromName(ArrayList<Person> arrayList) {
+    private void sort(ArrayList<Person> arrayList, MyCompaer o) {
         boolean isSorted = false;
         Person buf;
         while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < arrayList.size() - 1; i++) {
-                if (!(compareNameAtTheSameAge(arrayList.get(i), arrayList.get(i + 1)))) {
+                if (o.myCompare(arrayList.get(i), arrayList.get(i + 1))) {
                     isSorted = false;
 
                     buf = arrayList.get(i);
@@ -64,10 +48,10 @@ public class BubbleSort implements MethodOfSort {
         startTime = System.nanoTime();
 
         sortFromSex(array);
-        sortFromAge(man);
-        sortFromName(man);
-        sortFromAge(woman);
-        sortFromName(woman);
+        sort(man, new CompareAge());
+        sort(man, new CompareNameAtTheSameAge());
+        sort(woman, new CompareAge());
+        sort(woman, new CompareNameAtTheSameAge());
 
         List<Person> list = new ArrayList<>(man);
         list.addAll(woman);
