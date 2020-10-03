@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BubbleSort implements MethodOfSort {
-    private final ArrayList<Person> woman = new ArrayList<>();
-    private final ArrayList<Person> man = new ArrayList<>();
+    private final List<Person> woman = new ArrayList<>();
+    private final List<Person> man = new ArrayList<>();
     private long startTime;
     private long endTime;
 
@@ -22,7 +22,7 @@ public class BubbleSort implements MethodOfSort {
         }
     }
 
-    private void sort(ArrayList<Person> arrayList, MyCompare o) {
+    private void sort(List<Person> arrayList, MyCompare o) {
         boolean isSorted = false;
         Person buf;
         while (!isSorted) {

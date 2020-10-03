@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShakerSort implements MethodOfSort {
-    private final ArrayList<Person> woman = new ArrayList<>();
-    private final ArrayList<Person> man = new ArrayList<>();
+    private final List<Person> woman = new ArrayList<>();
+    private final List<Person> man = new ArrayList<>();
     private long startTime;
     private long endTime;
 
@@ -22,7 +22,7 @@ public class ShakerSort implements MethodOfSort {
         }
     }
 
-    private static void sort(ArrayList<Person> arrayList, MyCompare myCompaer) {
+    private static void sort(List<Person> arrayList, MyCompare myCompaer) {
         Person buff;
         int left = 0;
         int right = arrayList.size() - 1;
