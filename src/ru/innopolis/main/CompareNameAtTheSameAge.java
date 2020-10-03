@@ -4,7 +4,9 @@ import ru.innopolis.api.MyCompare;
 
 public class CompareNameAtTheSameAge implements MyCompare {
     @Override
-    public boolean myCompare(Person person1, Person person2) {
+    public boolean myCompare(Object obj1, Object obj2) {
+        final Person person1 = (Person) obj1;
+        final Person person2 = (Person) obj2;
         boolean result = false;
         if (person1.getAge() == person2.getAge()) {
             try {
