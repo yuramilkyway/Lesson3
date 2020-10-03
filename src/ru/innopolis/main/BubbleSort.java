@@ -1,28 +1,14 @@
 package ru.innopolis.main;
 
-import ru.innopolis.api.MethodOfSort;
 import ru.innopolis.api.MyCompare;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BubbleSort implements MethodOfSort {
-    private final List<Person> woman = new ArrayList<>();
-    private final List<Person> man = new ArrayList<>();
+public class BubbleSort extends SortPersons {
     private long startTime;
     private long endTime;
 
-    private void sortFromSex(List<Person> array) {
-        for (Person person : array) {
-            if (person.getSex().equals("MAN")) {
-                man.add(person);
-            } else {
-                woman.add(person);
-            }
-        }
-    }
-
-    private void sort(List<Person> arrayList, MyCompare o) {
+    protected void sort(List<Person> arrayList, MyCompare o) {
         boolean isSorted = false;
         Person buf;
         while (!isSorted) {
@@ -43,20 +29,4 @@ public class BubbleSort implements MethodOfSort {
         return (endTime - startTime) / 1_000_000_000.0;
     }
 
-    @Override
-    public List<Person> getSortedList(List<Person> incomingList) {
-
-        startTime = System.nanoTime();
-        sortFromSex(incomingList);
-        sort(man, new CompareAge());
-        sort(man, new CompareNameAtTheSameAge());
-        sort(woman, new CompareAge());
-        sort(woman, new CompareNameAtTheSameAge());
-
-        List<Person> outgoingList = new ArrayList<>(man);
-        outgoingList.addAll(woman);
-        endTime = System.nanoTime();
-
-        return outgoingList;
-    }
 }
