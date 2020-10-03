@@ -1,7 +1,7 @@
 package ru.innopolis.main;
 
 import ru.innopolis.api.MethodOfSort;
-import ru.innopolis.api.MyCompaer;
+import ru.innopolis.api.MyCompare;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class ShakerSort implements MethodOfSort {
         }
     }
 
-    private static void sort(ArrayList<Person> arrayList, MyCompaer myCompaer) {
+    private static void sort(ArrayList<Person> arrayList, MyCompare myCompaer) {
         Person buff;
         int left = 0;
         int right = arrayList.size() - 1;

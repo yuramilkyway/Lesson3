@@ -1,7 +1,7 @@
 package ru.innopolis.main;
 
 import ru.innopolis.api.MethodOfSort;
-import ru.innopolis.api.MyCompaer;
+import ru.innopolis.api.MyCompare;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class BubbleSort implements MethodOfSort {
         }
     }
 
-    private void sort(ArrayList<Person> arrayList, MyCompaer o) {
+    private void sort(ArrayList<Person> arrayList, MyCompare o) {
         boolean isSorted = false;
         Person buf;
         while (!isSorted) {

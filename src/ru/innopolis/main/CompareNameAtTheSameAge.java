@@ -1,8 +1,8 @@
 package ru.innopolis.main;
 
-import ru.innopolis.api.MyCompaer;
+import ru.innopolis.api.MyCompare;
 
-public class CompareNameAtTheSameAge implements MyCompaer {
+public class CompareNameAtTheSameAge implements MyCompare {
     @Override
     public boolean myCompare(Person person1, Person person2) {
         boolean result = false;
