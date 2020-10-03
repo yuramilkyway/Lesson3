@@ -28,7 +28,7 @@ public class ShakerSort implements MethodOfSort {
         int right = arrayList.size() - 1;
         do {
             for (int i = left; i < right; i++) {
-                if (myCompaer.myCompare(arrayList.get(i), arrayList.get(i + 1))) {
+                if (myCompaer.compareTwoObjects(arrayList.get(i), arrayList.get(i + 1))) {
                     buff = arrayList.get(i);
                     arrayList.set(i, arrayList.get(i + 1));
                     arrayList.set(i + 1, buff);
@@ -36,7 +36,7 @@ public class ShakerSort implements MethodOfSort {
             }
             right--;
             for (int i = right; i > left; i--) {
-                if (myCompaer.myCompare(arrayList.get(i - 1), arrayList.get(i))) {
+                if (myCompaer.compareTwoObjects(arrayList.get(i - 1), arrayList.get(i))) {
                     buff = arrayList.get(i);
                     arrayList.set(i, arrayList.get(i - 1));
                     arrayList.set(i - 1, buff);

@@ -28,7 +28,7 @@ public class BubbleSort implements MethodOfSort {
         while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < arrayList.size() - 1; i++) {
-                if (o.myCompare(arrayList.get(i), arrayList.get(i + 1))) {
+                if (o.compareTwoObjects(arrayList.get(i), arrayList.get(i + 1))) {
                     isSorted = false;
 
                     buf = arrayList.get(i);
