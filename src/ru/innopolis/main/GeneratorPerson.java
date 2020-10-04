@@ -38,11 +38,12 @@ public class GeneratorPerson {
             upperBound = random.nextInt(COUNT_FEMALE_NAMES) + 1;
         }
 
-        BufferedReader r = new BufferedReader(new FileReader(file));
-        for (int i = 0; i < upperBound; i++) {
-            r.readLine();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            for (int i = 0; i < upperBound; i++) {
+                bufferedReader.readLine();
+            }
+            return bufferedReader.readLine();
         }
-        return r.readLine();
     }
 
     private void launchGeneratorPerson(int countPerson) throws IOException {
