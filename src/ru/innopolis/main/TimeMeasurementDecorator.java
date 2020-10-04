@@ -4,11 +4,11 @@ import ru.innopolis.api.MethodOfSort;
 
 import java.util.List;
 
-public class MethodOfSortDecorator implements MethodOfSort {
+public class TimeMeasurementDecorator implements MethodOfSort {
     private double timeSpentSolving = 0;
     SortPersons sortPersons;
 
-    MethodOfSortDecorator(SortPersons sortPersons) {
+    TimeMeasurementDecorator(SortPersons sortPersons) {
         this.sortPersons = sortPersons;
     }
     public double getSortExecutionTime() {
@@ -16,7 +16,7 @@ public class MethodOfSortDecorator implements MethodOfSort {
     }
 
     private void setSortExecutionTime(double startTime, double finishTime) {
-        double NANO_SECONDS_TO_SECONDS = 1_000_000_000.0;
+        final double NANO_SECONDS_TO_SECONDS = 1_000_000_000.0;
         this.timeSpentSolving = (finishTime - startTime) / NANO_SECONDS_TO_SECONDS;
     }
 

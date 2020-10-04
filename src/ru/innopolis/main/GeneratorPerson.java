@@ -6,12 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class GeneratorPerson {
-    private static final int DEFAULT_COUNT_PERSON = 100;
+    private static final int DEFAULT_COUNT_PERSON = 10000;
     private final File fileWithMaleNames = new File("man.txt");
     private final File fileWithFemaleNames = new File("woman.txt");
     private final List<Person> list = new ArrayList<>();
+    final Random random = new Random();
 
     public GeneratorPerson(int countPerson) throws IOException {
         if (countPerson < DEFAULT_COUNT_PERSON) {
@@ -27,13 +29,13 @@ public class GeneratorPerson {
 
         if (sex.isMan(sex)) {
             file = fileWithMaleNames;
-            int COUNT_MALE_NAMES = 615;
-            upperBound = (int) (Math.random() * COUNT_MALE_NAMES);
+            final int COUNT_MALE_NAMES = 614;
+            upperBound = random.nextInt(COUNT_MALE_NAMES) + 1;
         }
         else {
             file = fileWithFemaleNames;
-            int COUNT_FEMALE_NAMES = 725;
-            upperBound = (int) (Math.random() * COUNT_FEMALE_NAMES);
+            final int COUNT_FEMALE_NAMES = 724;
+            upperBound = random.nextInt(COUNT_FEMALE_NAMES) + 1;
         }
 
         BufferedReader r = new BufferedReader(new FileReader(file));
@@ -45,8 +47,8 @@ public class GeneratorPerson {
 
     private void launchGeneratorPerson(int countPerson) throws IOException {
         for (int i = 0; i < countPerson; i++) {
-            int age = (int) ((Math.random() * (100)) + 1);
-            Sex sex = new Sex((int) Math.round(Math.random()));
+            int age = random.nextInt(100) + 1;
+            Sex sex = Sex.getRandomGender();
             String name = createName(sex);
             list.add(new Person(age, sex, name));
         }

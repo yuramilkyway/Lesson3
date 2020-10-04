@@ -15,8 +15,8 @@ public class Person {
         return age;
     }
 
-    public String getSex() {
-        return sex.getSex();
+    public Sex getSex() {
+        return sex;
     }
 
     public String getName() {
@@ -25,6 +25,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("Name: %s, Sex: %s, Age: %d;", name, sex.getSex(), age);
+        return String.format("Name: %s, Sex: %s, Age: %d;", name, sex, age);
     }
 }

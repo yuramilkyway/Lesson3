@@ -14,7 +14,7 @@ public abstract class SortPersons implements MethodOfSort {
 
     protected void sortFromSex(List<Person> persons, List<Person> means, List<Person> women) {
         for (Person person : persons) {
-            if (person.getSex().equals("MAN")) {
+            if (person.getSex() == Sex.MAN) {
                 means.add(person);
             } else {
                 women.add(person);

@@ -75,9 +75,9 @@ public class CaseMenu {
                     break;
                 case 2:
                     try {
-                        MethodOfSortDecorator methodOfSortDecorator = new MethodOfSortDecorator(sortPersons);
-                        persons = methodOfSortDecorator.getSortedList(oldPersons);
-                        System.out.println("\nВремя работы программы: " + (methodOfSortDecorator.getSortExecutionTime()) + " секунд.");
+                        TimeMeasurementDecorator timeMeasurementDecorator = new TimeMeasurementDecorator(sortPersons);
+                        persons = timeMeasurementDecorator.getSortedList(oldPersons);
+                        System.out.println("\nВремя работы программы: " + (timeMeasurementDecorator.getSortExecutionTime()) + " секунд.");
                     } catch (NullPointerException e) {
                         System.out.println("Сортировка не запускалась.");
                     }
