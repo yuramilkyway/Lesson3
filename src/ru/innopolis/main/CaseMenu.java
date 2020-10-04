@@ -62,45 +62,24 @@ public class CaseMenu {
         } while (key != 3);
     }
 
-    private void bubbleSortMenu() {
-        BubbleSort bubbleSort = null;
+    private void sortMenu(SortPersons sortPersons) {
         int key;
         do {
             printSortMenu();
             key = this.scanner.nextInt();
             switch (key) {
                 case 1:
-                    bubbleSort = new BubbleSort();
-                    persons = bubbleSort.getSortedList(persons);
+                    persons = sortPersons.getSortedList(persons);
                     break;
                 case 2:
-                    assert bubbleSort != null;
-                    System.out.println("\nВремя работы программы: " + bubbleSort.getSortExecutionTime() + " секунд.");
-                    break;
-                case 3:
-                    break;
-                default:
-                    printIncorrectValueMessage();
-                    break;
-            }
-        } while (key != 3);
-    }
-
-    private void shakerSortMenu() {
-        ShakerSort shakerSort = null;
-        int key;
-        do {
-            printSortMenu();
-            key = this.scanner.nextInt();
-            switch (key) {
-                case 1:
-                    shakerSort = new ShakerSort();
-                    persons = shakerSort.getSortedList(persons);
-                    break;
-                case 2:
-                    assert shakerSort != null;
-                    System.out.println("\nВремя работы программы: " + shakerSort.getSortExecutionTime() + " секунд.");
-                    break;
+                    try {
+                        System.out.println("\nВремя работы программы: " + sortPersons.getSortExecutionTime() + " секунд.");
+                    } catch (NullPointerException e) {
+                        System.out.println("Сортировка не запускалась.");
+                    }
+                    finally {
+                        break;
+                    }
                 case 3:
                     break;
                 default:
@@ -118,11 +97,20 @@ public class CaseMenu {
                 System.out.print("\nВведите номер меню: ");
                 key = this.scanner.nextInt();
                 switch (key) {
-                    case 1 -> personMenu();
-                    case 2 -> bubbleSortMenu();
-                    case 3 -> shakerSortMenu();
-                    case 4 -> System.out.println("\nЗавершение программы...");
-                    default -> System.out.println("\nВы ввели неверное значение меню...");
+                    case 1:
+                        personMenu();
+                        break;
+                    case 2:
+                        sortMenu(new BubbleSort());
+                        break;
+                    case 3:
+                        sortMenu(new ShakerSort());
+                        break;
+                    case 4:
+                        System.out.println("\nЗавершение программы...");
+                        break;
+                    default:
+                        System.out.println("\nВы ввели неверное значение меню...");
                 }
             } while (key != 4);
         }
