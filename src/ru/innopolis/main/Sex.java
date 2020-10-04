@@ -16,7 +16,7 @@ public class Sex {
         return sex;
     }
 
-    public boolean thisMan(Sex sex) {
+    public boolean isMan(Sex sex) {
         return sex.getSex().equals("MAN");
     }
 }

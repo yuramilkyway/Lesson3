@@ -25,13 +25,15 @@ public class GeneratorPerson {
         File file;
         int upperBound;
 
-        if (sex.thisMan(sex)) {
+        if (sex.isMan(sex)) {
             file = fileWithMaleNames;
-            upperBound = (int) (Math.random() * 615);
+            int COUNT_MALE_NAMES = 615;
+            upperBound = (int) (Math.random() * COUNT_MALE_NAMES);
         }
         else {
             file = fileWithFemaleNames;
-            upperBound = (int) (Math.random() * 725);
+            int COUNT_FEMALE_NAMES = 725;
+            upperBound = (int) (Math.random() * COUNT_FEMALE_NAMES);
         }
 
         BufferedReader r = new BufferedReader(new FileReader(file));
