@@ -10,26 +10,27 @@ public class CaseMenu {
 
 
     public CaseMenu(Scanner scanner) {
+
         this.scanner = scanner;
     }
 
     private void printMenu() {
         System.out.println("\n1. Перейти в меню Person;");
-        System.out.println("2. Перейти в меню сортировки Person с помощью Bubble Sort");
+        System.out.println("2. Перейти в меню сортировки Person с помощью Bubble Sort;");
         System.out.println("3. Перейти в меню сортировки Person с помощью Shaker Sort;");
-        System.out.println("4. Выход из приложения;");
+        System.out.println("4. Выход из приложения.");
     }
 
     private void printPersonMenu() {
         System.out.println("\n1. Сгенерировать список Person");
         System.out.println("2. Вывести весь список Person;");
-        System.out.println("3. Вернуться в прошлое меню\n");
+        System.out.println("3. Вернуться в прошлое меню.\n");
     }
 
     private void printSortMenu() {
         System.out.println("\n1. Отсортировать список Person;");
-        System.out.println("2. Показать время работы алгоритма");
-        System.out.println("3. Вернуться в прошлое меню");
+        System.out.println("2. Показать время работы алгоритма и отсортировать список;");
+        System.out.println("3. Вернуться в прошлое меню.");
     }
 
     private void printIncorrectValueMessage() {
