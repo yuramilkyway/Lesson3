@@ -47,7 +47,7 @@ public class CaseMenu {
                 case 1:
                     System.out.println("\nВведите количество Person.");
                     countPerson = this.scanner.nextInt();
-                    persons = new GeneratorPerson(countPerson).getArray();
+                    persons = (new GeneratorPerson(countPerson)).getListRandomPerson();
                     break;
                 case 2:
                     System.out.println();

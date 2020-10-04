@@ -10,17 +10,19 @@ import java.util.Random;
 
 public class GeneratorPerson {
     private static final int DEFAULT_COUNT_PERSON = 10000;
-    private final File fileWithMaleNames = new File("man.txt");
-    private final File fileWithFemaleNames = new File("woman.txt");
-    private final List<Person> list = new ArrayList<>();
+    private static final File FILE_WITH_MEAN_NAMES = new File("man.txt");
+    private static final File FILE_WITH_FEMALE_NAMES = new File("woman.txt");
     final Random random = new Random();
+    private final int COUNT_PERSON;
 
-    public GeneratorPerson(int countPerson) throws IOException {
+    public GeneratorPerson(int countPerson) {
         if (countPerson < DEFAULT_COUNT_PERSON) {
-            countPerson = DEFAULT_COUNT_PERSON;
+            this.COUNT_PERSON = DEFAULT_COUNT_PERSON;
             System.out.println("Минимальное количество объектов класса Person: " + DEFAULT_COUNT_PERSON);
         }
-        launchGeneratorPerson(countPerson);
+        else {
+            this.COUNT_PERSON = countPerson;
+        }
     }
 
     private String createName(Sex sex) throws IOException {
@@ -28,12 +30,12 @@ public class GeneratorPerson {
         int upperBound;
 
         if (sex.isMan(sex)) {
-            file = fileWithMaleNames;
+            file = FILE_WITH_MEAN_NAMES;
             final int COUNT_MALE_NAMES = 614;
             upperBound = random.nextInt(COUNT_MALE_NAMES) + 1;
         }
         else {
-            file = fileWithFemaleNames;
+            file = FILE_WITH_FEMALE_NAMES;
             final int COUNT_FEMALE_NAMES = 724;
             upperBound = random.nextInt(COUNT_FEMALE_NAMES) + 1;
         }
@@ -46,16 +48,18 @@ public class GeneratorPerson {
         }
     }
 
-    private void launchGeneratorPerson(int countPerson) throws IOException {
+    private List<Person> launchGeneratorPerson(int countPerson) throws IOException {
+        final List<Person> list = new ArrayList<>();
         for (int i = 0; i < countPerson; i++) {
             int age = random.nextInt(100) + 1;
             Sex sex = Sex.getRandomGender();
             String name = createName(sex);
             list.add(new Person(age, sex, name));
         }
+        return list;
     }
 
-    public List<Person> getArray() {
-        return list;
+    public List<Person> getListRandomPerson() throws IOException {
+        return (launchGeneratorPerson(COUNT_PERSON));
     }
 }
