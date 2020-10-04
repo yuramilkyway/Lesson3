@@ -7,16 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class SortPersons implements MethodOfSort {
-    private final double NANO_SECONDS_TO_SECONDS = 1_000_000_000.0;
-    private double timeSpentSolving = 0;
-
-    public double getSortExecutionTime() {
-        return timeSpentSolving;
-    }
-
-    private void setSortExecutionTime(double startTime, double finishTime) {
-        this.timeSpentSolving = (finishTime - startTime) / NANO_SECONDS_TO_SECONDS;
-    }
 
     protected void sort(List<Person> arrayList, MyCompare o) {
 
@@ -32,9 +22,8 @@ public abstract class SortPersons implements MethodOfSort {
         }
     }
 
-    private List<Person> startAlgorithm(List<Person> incomingList) {
+    protected List<Person> startAlgorithm(List<Person> incomingList) {
 
-        double startTime = System.nanoTime();
         List<Person> means = new ArrayList<>();
         List<Person> women = new ArrayList<>();
 
@@ -46,8 +35,6 @@ public abstract class SortPersons implements MethodOfSort {
 
         List<Person> outgoingList = new ArrayList<>(means);
         outgoingList.addAll(women);
-
-        setSortExecutionTime(startTime, System.nanoTime());
 
         return outgoingList;
     }

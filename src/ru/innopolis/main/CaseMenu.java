@@ -64,22 +64,23 @@ public class CaseMenu {
 
     private void sortMenu(SortPersons sortPersons) {
         int key;
+        List<Person> oldPersons = persons;
         do {
             printSortMenu();
             key = this.scanner.nextInt();
             switch (key) {
                 case 1:
-                    persons = sortPersons.getSortedList(persons);
+                    persons = sortPersons.getSortedList(oldPersons);
                     break;
                 case 2:
                     try {
-                        System.out.println("\nВремя работы программы: " + sortPersons.getSortExecutionTime() + " секунд.");
+                        MethodOfSortDecorator methodOfSortDecorator = new MethodOfSortDecorator(sortPersons);
+                        persons = methodOfSortDecorator.getSortedList(oldPersons);
+                        System.out.println("\nВремя работы программы: " + (methodOfSortDecorator.getSortExecutionTime()) + " секунд.");
                     } catch (NullPointerException e) {
                         System.out.println("Сортировка не запускалась.");
                     }
-                    finally {
-                        break;
-                    }
+                    break;
                 case 3:
                     break;
                 default:

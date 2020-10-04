@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GeneratorPerson {
-    private static final int DEFAULT_COUNT_PERSON = 10_000;
+    private static final int DEFAULT_COUNT_PERSON = 100;
     private final List<Person> list;
 
     public GeneratorPerson(int countPerson) throws IOException {
