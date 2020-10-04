@@ -1,9 +1,6 @@
 package ru.innopolis.main;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +9,9 @@ public class GeneratorPerson {
     private static final int DEFAULT_COUNT_PERSON = 10000;
     private static final File FILE_WITH_MEAN_NAMES = new File("man.txt");
     private static final File FILE_WITH_FEMALE_NAMES = new File("woman.txt");
+    private final List<String> LIST_WITH_MEAN_NAMES = new ArrayList<>();
+    private final List<String> LIST_WITH_FEMALE_NAMES = new ArrayList<>();
+    private boolean isInit = true;
     final Random random = new Random();
     private final int COUNT_PERSON;
 
@@ -25,41 +25,51 @@ public class GeneratorPerson {
         }
     }
 
-    private String createName(Sex sex) throws IOException {
-        File file;
-        int upperBound;
-
-        if (sex.isMan(sex)) {
-            file = FILE_WITH_MEAN_NAMES;
-            final int COUNT_MALE_NAMES = 614;
-            upperBound = random.nextInt(COUNT_MALE_NAMES) + 1;
-        }
-        else {
-            file = FILE_WITH_FEMALE_NAMES;
-            final int COUNT_FEMALE_NAMES = 724;
-            upperBound = random.nextInt(COUNT_FEMALE_NAMES) + 1;
-        }
-
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
-            for (int i = 0; i < upperBound; i++) {
-                bufferedReader.readLine();
+    private String getName(Sex sex) {
+        try {
+            if (isInit) {
+                try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_WITH_MEAN_NAMES))) {
+                    String temp = bufferedReader.readLine();
+                    while (temp != null) {
+                        LIST_WITH_MEAN_NAMES.add(temp);
+                        temp = bufferedReader.readLine();
+                    }
+                }
+                try (BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_WITH_FEMALE_NAMES))) {
+                    String temp = bufferedReader.readLine();
+                    while (temp != null) {
+                        LIST_WITH_FEMALE_NAMES.add(temp);
+                        temp = bufferedReader.readLine();
+                    }
+                }
+                isInit = false;
             }
-            return bufferedReader.readLine();
+
+            if (sex.isMan(sex)) {
+                int randomMeanName = random.nextInt(LIST_WITH_MEAN_NAMES.size());
+                return LIST_WITH_MEAN_NAMES.get(randomMeanName);
+            } else {
+                int randomFemaleName = random.nextInt(LIST_WITH_FEMALE_NAMES.size());
+                return LIST_WITH_FEMALE_NAMES.get(randomFemaleName);
+            }
+        } catch (IOException e) {
+            System.out.println("Не найдены файлы для чтения имен. " + e);
         }
+        return "unnamed";
     }
 
-    private List<Person> launchGeneratorPerson(int countPerson) throws IOException {
+    private List<Person> launchGeneratorPerson(int countPerson) {
         final List<Person> list = new ArrayList<>();
         for (int i = 0; i < countPerson; i++) {
             int age = random.nextInt(100) + 1;
             Sex sex = Sex.getRandomGender();
-            String name = createName(sex);
+            String name = getName(sex);
             list.add(new Person(age, sex, name));
         }
         return list;
     }
 
-    public List<Person> getListRandomPerson() throws IOException {
+    public List<Person> getListRandomPerson() {
         return (launchGeneratorPerson(COUNT_PERSON));
     }
 }
