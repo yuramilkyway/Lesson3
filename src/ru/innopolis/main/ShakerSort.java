@@ -5,8 +5,6 @@ import ru.innopolis.api.MyCompare;
 import java.util.List;
 
 public class ShakerSort extends SortPersons {
-    private long startTime;
-    private long endTime;
 
     protected void sort(List<Person> arrayList, MyCompare myCompare) {
         Person buff;
@@ -30,9 +28,5 @@ public class ShakerSort extends SortPersons {
             }
             left++;
         } while (left < right);
-    }
-
-    public double getAlgorithmRunningTime() {
-        return (endTime - startTime) / 1_000_000_000.0;
     }
 }

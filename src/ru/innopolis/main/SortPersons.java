@@ -7,37 +7,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class SortPersons implements MethodOfSort {
+    private final double NANO_SECONDS_TO_SECONDS = 1_000_000_000.0;
+    private double timeSpentSolving = 0;
+
+    public double getSortExecutionTime() {
+        return timeSpentSolving;
+    }
+
+    private void setSortExecutionTime(double startTime, double finishTime) {
+        this.timeSpentSolving = (finishTime - startTime) / NANO_SECONDS_TO_SECONDS;
+    }
 
     protected void sort(List<Person> arrayList, MyCompare o) {
 
     }
 
-    protected void sortFromSex(List<Person> persons, List<Person> mans, List<Person> womans) {
+    protected void sortFromSex(List<Person> persons, List<Person> means, List<Person> women) {
         for (Person person : persons) {
             if (person.getSex().equals("MAN")) {
-                mans.add(person);
+                means.add(person);
             } else {
-                womans.add(person);
+                women.add(person);
             }
         }
     }
 
-    @Override
-    public List<Person> getSortedList(List<Person> incomingList) {
-        List<Person> mans = new ArrayList<>();;
-        List<Person> womans = new ArrayList<>();
+    private List<Person> startAlgorithm(List<Person> incomingList) {
 
-        //startTime = System.nanoTime();
-        sortFromSex(incomingList, mans, womans);
-        sort(mans, new CompareAge());
-        sort(mans, new CompareNameAtTheSameAge());
-        sort(womans, new CompareAge());
-        sort(womans, new CompareNameAtTheSameAge());
+        double startTime = System.nanoTime();
+        List<Person> means = new ArrayList<>();
+        List<Person> women = new ArrayList<>();
 
-        List<Person> outgoingList = new ArrayList<>(mans);
-        outgoingList.addAll(womans);
-        //endTime = System.nanoTime();
+        sortFromSex(incomingList, means, women);
+        sort(means, new CompareAge());
+        sort(means, new CompareNameAtTheSameAge());
+        sort(women, new CompareAge());
+        sort(women, new CompareNameAtTheSameAge());
+
+        List<Person> outgoingList = new ArrayList<>(means);
+        outgoingList.addAll(women);
+
+        setSortExecutionTime(startTime, System.nanoTime());
 
         return outgoingList;
+    }
+
+    @Override
+    public List<Person> getSortedList(List<Person> incomingList) {
+        return startAlgorithm(incomingList);
     }
 }

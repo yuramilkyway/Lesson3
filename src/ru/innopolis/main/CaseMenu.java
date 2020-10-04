@@ -75,7 +75,7 @@ public class CaseMenu {
                     break;
                 case 2:
                     assert bubbleSort != null;
-                    System.out.println("\nВремя работы программы: " + bubbleSort.getAlgorithmRunningTime() + " секунд.");
+                    System.out.println("\nВремя работы программы: " + bubbleSort.getSortExecutionTime() + " секунд.");
                     break;
                 case 3:
                     break;
@@ -99,7 +99,7 @@ public class CaseMenu {
                     break;
                 case 2:
                     assert shakerSort != null;
-                    System.out.println("\nВремя работы программы: " + shakerSort.getAlgorithmRunningTime() + " секунд.");
+                    System.out.println("\nВремя работы программы: " + shakerSort.getSortExecutionTime() + " секунд.");
                     break;
                 case 3:
                     break;

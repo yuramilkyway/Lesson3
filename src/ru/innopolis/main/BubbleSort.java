@@ -5,8 +5,6 @@ import ru.innopolis.api.MyCompare;
 import java.util.List;
 
 public class BubbleSort extends SortPersons {
-    private long startTime;
-    private long endTime;
 
     protected void sort(List<Person> arrayList, MyCompare o) {
         boolean isSorted = false;
@@ -24,9 +22,4 @@ public class BubbleSort extends SortPersons {
             }
         }
     }
-
-    public double getAlgorithmRunningTime() {
-        return (endTime - startTime) / 1_000_000_000.0;
-    }
-
 }
