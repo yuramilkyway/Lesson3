@@ -10,13 +10,16 @@ import ru.innopolis.library.sorts.TimeMeasurementDecorator;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Консольное меню проекта.
+ * Дает возможнсоть запуска генерации объектов person и их сортировку.
+ */
 public class CaseMenu {
     private final Scanner scanner;
     private List<Person> persons;
 
 
     public CaseMenu(Scanner scanner) {
-
         this.scanner = scanner;
     }
 
@@ -43,6 +46,13 @@ public class CaseMenu {
         System.out.println("\nВы ввели неверное значение меню...");
     }
 
+    /**
+     * Меню класса Person и GeneratePerson.
+     * 1) Вызывает метод генерации Person.
+     * 2) Выводит в консоль элементы списка Person.
+     * 3) Возвращает в главное меню.
+     * При невалидном вводе, выводит "заглушку".
+     */
     private void personMenu() {
         int key;
         do {
@@ -69,6 +79,14 @@ public class CaseMenu {
         } while (key != 3);
     }
 
+    /**
+     * Меню сортировок.
+     * 1) Вызывает сортировку списка Person.
+     * 2) Вызывает сортировку списка Person с замером времени.
+     * 3) Возвращает в главное меню.
+     * При невалидном вводе, выводит "заглушку".
+     * @param sortPersons Принимает вид сортировки, которая унаследуется от абстрактного класса SortPersons.
+     */
     private void sortMenu(SortPersons sortPersons) {
         int key;
         List<Person> oldPersons = persons;
@@ -97,6 +115,14 @@ public class CaseMenu {
         } while (key != 3);
     }
 
+    /**
+     * Метод запуска консольного меню.
+     * 1) Переход в меню классов Person и GeneratePerson
+     * 2) Переход в меню сорировки с Bubble сортировокой.
+     * 3) Переход в меню сорировки с Shaker сортировокой.
+     * 4) Завершение программы.
+     * При невалидном вводе, выводит "заглушку".
+     */
     public void start() {
         if (this.scanner != null) {
             int key;

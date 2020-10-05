@@ -6,6 +6,12 @@ import ru.innopolis.library.person.Person;
 
 public class CompareNameAtTheSameAge implements MyCompare {
 
+    /**
+     * Сравнивает посимвольно имена двух объектов с равным возрастом(age).
+     * @param obj1 person1
+     * @param obj2 person2
+     * @return "Меньше" ли имя person1 или нет.
+     */
     @Override
     public boolean compareTwoObjects(Object obj1, Object obj2) {
         final Person person1 = (Person) obj1;
