@@ -14,6 +14,12 @@ public abstract class SortPersons implements MethodOfSort {
 
     protected abstract void sort(List<Person> arrayList, MyCompare o);
 
+    /**
+     * Разбиваем по полу список persons.
+     * @param persons Список со смешанными объектами Person.
+     * @param means Список для хранения объектов Person, где пол == Sex.MAN.
+     * @param women Список для хранения объектов Person, где пол == Sex.WOMAN.
+     */
     protected void sortFromSex(List<Person> persons, List<Person> means, List<Person> women) {
         for (Person person : persons) {
             if (person.getSex() == Sex.MAN) {
@@ -24,6 +30,11 @@ public abstract class SortPersons implements MethodOfSort {
         }
     }
 
+    /**
+     * Методы запускает вспомогательные методы для сортировки принимаемого листа.
+     * @param incomingList Лист с объекьами Person для сортировки.
+     * @return Возвращает отсортированный лист.
+     */
     protected List<Person> startAlgorithm(List<Person> incomingList) {
 
         List<Person> means = new ArrayList<>();
@@ -41,6 +52,11 @@ public abstract class SortPersons implements MethodOfSort {
         return outgoingList;
     }
 
+    /**
+     * Вызывает метод сортировки.
+     * @param incomingList Принимает сортируемый список.
+     * @return Возвращает отсортированный список.
+     */
     @Override
     public List<Person> getSortedList(List<Person> incomingList) {
         return startAlgorithm(incomingList);

@@ -59,15 +59,22 @@ public class GeneratorPerson {
     }
 
     /**
-     * Возвращаем рандомное имя из list-a
-     * @param list
-     * @return
+     * Возвращаем рандомное имя из list-a.
+     * @param list Лист, в котором ищем имя.
+     * @return Возвращаем Имя.
      */
     private String getNameFromList(List<String> list) {
         int randomFemaleName = random.nextInt(list.size());
         return list.get(randomFemaleName);
     }
 
+    /**
+     * Возвращает имя, рандомно выбрано из листа
+     * с именами запрошенного пола.
+     * При первом обращении вызывает метод иницилизации имен.
+     * @param sex Пол для поиска имени.
+     * @return Возвращает имя.
+     */
     private String getName(Sex sex) {
         if (isNotInit) {
             initList();
@@ -81,6 +88,12 @@ public class GeneratorPerson {
         }
     }
 
+    /**
+     * Создает объект класса Person.
+     * С рандомно выбранным возсрастом, полом и именем.
+     * @param countPerson Количество элементов
+     * @return Возвращает список с объектами Person-a.
+     */
     private List<Person> launchGeneratorPerson(int countPerson) {
         final List<Person> list = new ArrayList<>();
         for (int i = 0; i < countPerson; i++) {
@@ -92,6 +105,10 @@ public class GeneratorPerson {
         return list;
     }
 
+    /**
+     * Запускает метод для генерации объектов класса Person.
+     * @return Возвращает список с объектами Person.
+     */
     public List<Person> getListRandomPerson() {
         return (launchGeneratorPerson(COUNT_PERSON));
     }

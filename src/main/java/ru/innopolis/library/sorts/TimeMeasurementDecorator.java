@@ -5,6 +5,9 @@ import ru.innopolis.library.person.Person;
 
 import java.util.List;
 
+/**
+ * Декоратор для сортировок, который добавляет счетчик времени выполнения алгоритма.
+ */
 public class TimeMeasurementDecorator implements MethodOfSort {
     private double timeSpentSolving = 0;
     SortPersons sortPersons;
@@ -21,6 +24,11 @@ public class TimeMeasurementDecorator implements MethodOfSort {
         this.timeSpentSolving = (finishTime - startTime) / NANO_SECONDS_TO_SECONDS;
     }
 
+    /**
+     * Засекает время, до и после запуска сортировки листа с объктами Person.
+     * @param incomingList Сортируемый список.
+     * @return Отсортируемый список.
+     */
     @Override
     public List<Person> getSortedList(List<Person> incomingList) {
         double startTime = System.nanoTime();

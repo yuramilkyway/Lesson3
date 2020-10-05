@@ -30,12 +30,18 @@ public class SortsTest {
     public void setUp() {
         sorter = SortsFactory.getSorter(type);
         original = new ArrayList<>();
-        original.add(new Person(14, Sex.MAN, "Valera"));
-        original.add(new Person(20, Sex.MAN, "Valera"));
+        original.add(new Person(14, Sex.MAN, "Валера"));
+        original.add(new Person(20, Sex.MAN, "Валера"));
+        original.add(new Person(20, Sex.WOMAN, "Валя"));
+        original.add(new Person(20, Sex.MAN, "Алексей"));
+        original.add(new Person(20, Sex.MAN, "Ян"));
 
         correct = new ArrayList<>();
-        correct.add(new Person(20, Sex.MAN, "Valera"));
-        correct.add(new Person(14, Sex.MAN, "Valera"));
+        correct.add(new Person(20, Sex.MAN, "Алексей"));
+        correct.add(new Person(20, Sex.MAN, "Валера"));
+        correct.add(new Person(20, Sex.MAN, "Ян"));
+        correct.add(new Person(14, Sex.MAN, "Валера"));
+        correct.add(new Person(20, Sex.WOMAN, "Валя"));
     }
 
     @Parameterized.Parameters

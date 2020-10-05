@@ -7,18 +7,23 @@ import java.util.List;
 
 public class BubbleSort extends SortPersons {
 
-    protected void sort(List<Person> arrayList, MyCompare o) {
+    /**
+     * Реализация пузырьковой сортировки.
+     * @param personList Лист, который надо отсортировать.
+     * @param comparisonMethod Метод сравнения.
+     */
+    protected void sort(List<Person> personList, MyCompare comparisonMethod) {
         boolean isSorted = false;
         Person buf;
         while (!isSorted) {
             isSorted = true;
-            for (int i = 0; i < arrayList.size() - 1; i++) {
-                if (o.compareTwoObjects(arrayList.get(i), arrayList.get(i + 1))) {
+            for (int i = 0; i < personList.size() - 1; i++) {
+                if (comparisonMethod.compareTwoObjects(personList.get(i), personList.get(i + 1))) {
                     isSorted = false;
 
-                    buf = arrayList.get(i);
-                    arrayList.set(i, arrayList.get(i + 1));
-                    arrayList.set(i + 1, buf);
+                    buf = personList.get(i);
+                    personList.set(i, personList.get(i + 1));
+                    personList.set(i + 1, buf);
                 }
             }
         }

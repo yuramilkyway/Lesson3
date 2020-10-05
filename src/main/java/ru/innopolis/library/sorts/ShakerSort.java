@@ -7,24 +7,29 @@ import java.util.List;
 
 public class ShakerSort extends SortPersons {
 
-    protected void sort(List<Person> arrayList, MyCompare myCompare) {
+    /**
+     * Реализация Шейкерной сортировки.
+     * @param personList Лист, который надо отсортировать.
+     * @param comparisonMethod Метод сравнения.
+     */
+    protected void sort(List<Person> personList, MyCompare comparisonMethod) {
         Person buff;
         int left = 0;
-        int right = arrayList.size() - 1;
+        int right = personList.size() - 1;
         do {
             for (int i = left; i < right; i++) {
-                if (myCompare.compareTwoObjects(arrayList.get(i), arrayList.get(i + 1))) {
-                    buff = arrayList.get(i);
-                    arrayList.set(i, arrayList.get(i + 1));
-                    arrayList.set(i + 1, buff);
+                if (comparisonMethod.compareTwoObjects(personList.get(i), personList.get(i + 1))) {
+                    buff = personList.get(i);
+                    personList.set(i, personList.get(i + 1));
+                    personList.set(i + 1, buff);
                 }
             }
             right--;
             for (int i = right; i > left; i--) {
-                if (myCompare.compareTwoObjects(arrayList.get(i - 1), arrayList.get(i))) {
-                    buff = arrayList.get(i);
-                    arrayList.set(i, arrayList.get(i - 1));
-                    arrayList.set(i - 1, buff);
+                if (comparisonMethod.compareTwoObjects(personList.get(i - 1), personList.get(i))) {
+                    buff = personList.get(i);
+                    personList.set(i, personList.get(i - 1));
+                    personList.set(i - 1, buff);
                 }
             }
             left++;
