@@ -1,6 +1,7 @@
-package ru.innopolis.main;
+package ru.innopolis.library.comparator;
 
 import ru.innopolis.api.MyCompare;
+import ru.innopolis.library.person.Person;
 
 public class CompareAge implements MyCompare {
     @Override

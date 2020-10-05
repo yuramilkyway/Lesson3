@@ -1,6 +1,8 @@
-package ru.innopolis.main;
+package ru.innopolis.library.comparator;
 
 import ru.innopolis.api.MyCompare;
+import ru.innopolis.library.exception.DuplicatePersonException;
+import ru.innopolis.library.person.Person;
 
 public class CompareNameAtTheSameAge implements MyCompare {
 

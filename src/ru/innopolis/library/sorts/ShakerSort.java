@@ -1,6 +1,7 @@
-package ru.innopolis.main;
+package ru.innopolis.library.sorts;
 
 import ru.innopolis.api.MyCompare;
+import ru.innopolis.library.person.Person;
 
 import java.util.List;
 

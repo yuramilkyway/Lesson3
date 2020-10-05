@@ -1,7 +1,7 @@
 package ru.innopolis.api;
 
-import ru.innopolis.main.DuplicatePersonException;
-import ru.innopolis.main.Person;
+import ru.innopolis.library.exception.DuplicatePersonException;
+import ru.innopolis.library.person.Person;
 
 import java.util.List;
 

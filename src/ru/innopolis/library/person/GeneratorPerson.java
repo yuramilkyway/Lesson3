@@ -1,4 +1,4 @@
-package ru.innopolis.main;
+package ru.innopolis.library.person;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class GeneratorPerson {
     private static final int DEFAULT_COUNT_PERSON = 10000;
-    private static final File FILE_WITH_MEAN_NAMES = new File("man.txt");
-    private static final File FILE_WITH_FEMALE_NAMES = new File("woman.txt");
+    private static final File FILE_WITH_MEAN_NAMES = new File("resources/man.txt");
+    private static final File FILE_WITH_FEMALE_NAMES = new File("resources/woman.txt");
     private final List<String> LIST_WITH_MEAN_NAMES = new ArrayList<>();
     private final List<String> LIST_WITH_FEMALE_NAMES = new ArrayList<>();
     private boolean isInit = true;

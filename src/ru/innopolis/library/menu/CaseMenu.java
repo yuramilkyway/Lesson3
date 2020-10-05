@@ -1,6 +1,12 @@
-package ru.innopolis.main;
+package ru.innopolis.library.menu;
 
-import java.io.IOException;
+import ru.innopolis.library.person.GeneratorPerson;
+import ru.innopolis.library.person.Person;
+import ru.innopolis.library.sorts.BubbleSort;
+import ru.innopolis.library.sorts.ShakerSort;
+import ru.innopolis.library.sorts.SortPersons;
+import ru.innopolis.library.sorts.TimeMeasurementDecorator;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,7 +43,7 @@ public class CaseMenu {
         System.out.println("\nВы ввели неверное значение меню...");
     }
 
-    private void personMenu() throws IOException {
+    private void personMenu() {
         int key;
         do {
             printPersonMenu();
@@ -91,7 +97,7 @@ public class CaseMenu {
         } while (key != 3);
     }
 
-    public void start() throws IOException {
+    public void start() {
         if (this.scanner != null) {
             int key;
             do {

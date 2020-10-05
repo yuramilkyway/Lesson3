@@ -1,6 +1,7 @@
-package ru.innopolis.main;
+package ru.innopolis.library.sorts;
 
 import ru.innopolis.api.MethodOfSort;
+import ru.innopolis.library.person.Person;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class TimeMeasurementDecorator implements MethodOfSort {
     private double timeSpentSolving = 0;
     SortPersons sortPersons;
 
-    TimeMeasurementDecorator(SortPersons sortPersons) {
+    public TimeMeasurementDecorator(SortPersons sortPersons) {
         this.sortPersons = sortPersons;
     }
     public double getSortExecutionTime() {

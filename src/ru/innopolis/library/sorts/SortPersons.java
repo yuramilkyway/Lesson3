@@ -1,7 +1,11 @@
-package ru.innopolis.main;
+package ru.innopolis.library.sorts;
 
 import ru.innopolis.api.MethodOfSort;
 import ru.innopolis.api.MyCompare;
+import ru.innopolis.library.comparator.CompareAge;
+import ru.innopolis.library.comparator.CompareNameAtTheSameAge;
+import ru.innopolis.library.person.Person;
+import ru.innopolis.library.person.Sex;
 
 import java.util.ArrayList;
 import java.util.List;

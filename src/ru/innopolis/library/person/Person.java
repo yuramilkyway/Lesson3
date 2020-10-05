@@ -1,4 +1,4 @@
-package ru.innopolis.main;
+package ru.innopolis.library.person;
 
 public class Person {
     private final int age;
