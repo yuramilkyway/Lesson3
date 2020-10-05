@@ -39,6 +39,11 @@ public class GeneratorPerson {
         readNamesFromFileAndWriteToList(FILE_WITH_FEMALE_NAMES, LIST_WITH_FEMALE_NAMES);
     }
 
+    /**
+     * Считываем имена с файла и записываем в лист.
+     * @param file Название считываемого файла.
+     * @param list Лист для записи строк.
+     */
     private void readNamesFromFileAndWriteToList(File file, List<String> list) {
         try {
             try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
@@ -53,6 +58,11 @@ public class GeneratorPerson {
         }
     }
 
+    /**
+     * Возвращаем рандомное имя из list-a
+     * @param list
+     * @return
+     */
     private String getNameFromList(List<String> list) {
         int randomFemaleName = random.nextInt(list.size());
         return list.get(randomFemaleName);

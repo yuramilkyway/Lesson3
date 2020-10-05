@@ -12,9 +12,7 @@ import java.util.List;
 
 public abstract class SortPersons implements MethodOfSort {
 
-    protected void sort(List<Person> arrayList, MyCompare o) {
-
-    }
+    protected abstract void sort(List<Person> arrayList, MyCompare o);
 
     protected void sortFromSex(List<Person> persons, List<Person> means, List<Person> women) {
         for (Person person : persons) {
